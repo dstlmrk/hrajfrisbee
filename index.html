@@ -50,8 +50,10 @@
                 <h1><font color="white">#hrajfrisbee</font></h1>
                 <!-- <font color="red">This is some text!</font> -->
                 <h3><font color="white">Začni hrát Ultimate Frisbee</font></h3>
-                <!-- <br> -->
+                <!-- <br> 
                 <a href="http://www.zlutazimnice.cz/" target="_blank" class="btn btn-dark btn-lg">Chci hrát!</a>
+                -->
+                <a href="#" class="i-wanna-play-link btn btn-lg btn-light">Chci hrát</a>
             </div>
         </header>
         <!-- About -->
@@ -256,7 +258,7 @@
                         <h3>Kde můžu začít hrát? Jak začít?</h3>
                         <p class="lead">Začít můžeš prakticky ihned, stačí se ozvat. Nebo si od nás chceš koupit jenom origo disk?</p>
                         <!-- TODO: misto pro formular -->
-                        <a href="http://www.zlutazimnice.cz/" target="_blank" class="btn btn-lg btn-light">Chci hrát</a>
+                        <a href="#" class="i-wanna-play-link" class="btn btn-lg btn-light">Chci hrát</a>
                     </div>
                 </div>
             </div>
@@ -374,5 +376,38 @@
                 // Enable map zooming with mouse scroll when the user clicks the map
             $('.map').on('click', onMapClickHandler);
         </script>
+
+        <script language="javascript">
+            $('.i-wanna-play-link').on('click', function(){
+                $('#add-column-modal').modal('show')
+            })
+
+            $('#wanna-play-form').on('submit', function(){
+              // posleme si to na pozadi na "server"
+              // a kdyz to klapne, tak zobrazime nejakou "dekovnou" message
+            })
+        </script>
+        <!-- i wanna play modal -->
+        <div id="add-column-modal" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="helpModal">Chci hrát</h4>
+                <br>
+                (je to hrubej prototyp, bude se to muset nastylovat)
+              </div>
+              <div class="modal-body">
+                <p>Zde vyplňte svůj email, a my s vámi zahájíme komunikaci ve které se dozvíte vše co potřebujete, abyste mohli s frisbee ultimate začít</p>
+                <div class="container-fluid" id="form_area">
+                  <form action="/wanna-play" method="post" id="wanna-play-form">
+                    email: <input type="text" name="email">
+                    <input class="btn btn-sm btn-primary" type="submit" value ="Ano, chci!">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>        
     </body>
 </html>
