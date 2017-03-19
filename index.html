@@ -258,7 +258,7 @@
                         <h3>Kde můžu začít hrát? Jak začít?</h3>
                         <p class="lead">Začít můžeš prakticky ihned, stačí se ozvat. Nebo si od nás chceš koupit jenom origo disk?</p>
                         <!-- TODO: misto pro formular -->
-                        <a href="#" class="i-wanna-play-link" class="btn btn-lg btn-light">Chci hrát</a>
+                        <a href="#" class="i-wanna-play-link btn btn-lg btn-light">Chci hrát</a>
                     </div>
                 </div>
             </div>
@@ -392,38 +392,48 @@
         <div id="add-column-modal" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="/wanna-play" method="post" id="wanna-play-form">
+                    <form action="/wanna-play" method="post" id="wanna-play-form" class="form-horizontal">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h2 class="modal-title" id="helpModal">Chci hrát</h2>
+                            <h3 class="modal-title" id="helpModal">Chci hrát</h3>
                         </div>
                         <div class="modal-body">
-                            <p>Ozvi se nám a my ti pošleme pozvánku na první Ultimate Frisbee trénink!</p>
-                            <div class="form-group">
-                                <label class="control-label">Email</label>
-                                <input class="form-control" type="email" name="email" required>
+                            <div class="row">
+                                <p class="col-lg-10 col-lg-offset-2">
+                                    Ozvi se nám a my ti pošleme pozvánku na první Ultimate Frisbee trénink!
+                                </p>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label">Věk</label>
-                                <input class="form-control" type="number">
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Jsem</label>
-                                <div class="col-lg-10">
-                                    <div class="radio">
-                                        <label>
-                                        <input type="radio" name="optionsRadios" id="girl" value="girl" checked="">
-                                        holka
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                        <input type="radio" name="optionsRadios" id="boy" value="boy">
-                                        kluk
-                                        </label>
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                    <div class="col-lg-10">
+                                        <input class="form-control" type="email" name="email" required>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <label for="inputAge" class="col-lg-2 control-label">Věk</label>
+                                    <div class="col-lg-10">
+                                        <input class="form-control" type="number" name="age">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">Jsem</label>
+                                    <div class="col-lg-10">
+                                        <div class="radio">
+                                            <label>
+                                            <input type="radio" name="optionsRadios" id="girl" value="girl" checked="">
+                                            holka
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                            <input type="radio" name="optionsRadios" id="boy" value="boy">
+                                            kluk
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-dark btn-lg">Odeslat</button>
