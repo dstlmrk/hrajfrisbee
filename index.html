@@ -387,27 +387,50 @@
               // a kdyz to klapne, tak zobrazime nejakou "dekovnou" message
             })
         </script>
+
         <!-- i wanna play modal -->
         <div id="add-column-modal" class="modal fade" tabindex="-1" role="dialog">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="helpModal">Chci hrát</h4>
-                <br>
-                (je to hrubej prototyp, bude se to muset nastylovat)
-              </div>
-              <div class="modal-body">
-                <p>Zde vyplňte svůj email, a my s vámi zahájíme komunikaci ve které se dozvíte vše co potřebujete, abyste mohli s frisbee ultimate začít</p>
-                <div class="container-fluid" id="form_area">
-                  <form action="/wanna-play" method="post" id="wanna-play-form">
-                    email: <input type="text" name="email">
-                    <input class="btn btn-sm btn-primary" type="submit" value ="Ano, chci!">
-                  </form>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="/wanna-play" method="post" id="wanna-play-form">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h2 class="modal-title" id="helpModal">Chci hrát</h2>
+                        </div>
+                        <div class="modal-body">
+                            <p>Ozvi se nám a my ti pošleme pozvánku na první Ultimate Frisbee trénink!</p>
+                            <div class="form-group">
+                                <label class="control-label">Email</label>
+                                <input class="form-control" type="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Věk</label>
+                                <input class="form-control" type="number">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Jsem</label>
+                                <div class="col-lg-10">
+                                    <div class="radio">
+                                        <label>
+                                        <input type="radio" name="optionsRadios" id="girl" value="girl" checked="">
+                                        holka
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                        <input type="radio" name="optionsRadios" id="boy" value="boy">
+                                        kluk
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-dark btn-lg">Odeslat</button>
+                        </div>
+                    </form>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>        
+        </div>
     </body>
 </html>
