@@ -36,7 +36,7 @@ def wanna_play():
   #ipdb.set_trace()
   # append email into the textfile
   with open('results.txt', 'a+') as f:
-    f.write(strftime("%d.%m.%Y", gmtime()) + ": " + request.form['email'] + "\n") 
+    f.write(strftime("%d.%m.%Y %H:%M", gmtime()) + ": " + request.form['email'] + ", vek: " + request.form['age'] + ", pohlavi: " + request.form['age'] + "\n") 
 
   # send an email with information to the user and to us
   msg = Message('Nova registrace na hrajfrisbee.cz', sender='root@hrajfrisbee.cz', recipients=['kacerr.cz@gmail.com'])
