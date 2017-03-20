@@ -40,7 +40,7 @@ def wanna_play():
 
   # send an email with information to the user and to us
   msg = Message('Nova registrace na hrajfrisbee.cz', sender='root@hrajfrisbee.cz', recipients=['kacerr.cz@gmail.com'])
-  msg.body = 'Uzivatel: ' + request.form['email'] + ' prave projevil zajem o frisbee.'
+  msg.body = 'Uzivatel: ' + request.form['email'] + ', vek: ' + request.form['age'] + ", pohlavi: " + request.form['age'] + ' prave projevil zajem o frisbee.'
   mail.send(msg)
 
   # redirect to thank you page
