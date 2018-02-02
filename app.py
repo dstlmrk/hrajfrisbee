@@ -3,6 +3,7 @@
 # Flask server, woo!
 #
 
+import os 
 from flask import Flask, request, redirect, url_for, send_from_directory
 from time import gmtime, strftime
 from flask_mail import Mail, Message
@@ -15,7 +16,7 @@ app.debug = True
 
 ### config
 # email server
-MAIL_SERVER = 'localhost'
+MAIL_SERVER = os.getenv("SMTP_SERVER", "localhost")
 MAIL_PORT = 25
 MAIL_USERNAME = None
 MAIL_PASSWORD = None
