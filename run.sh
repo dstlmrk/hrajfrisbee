@@ -10,7 +10,7 @@ docker rm -f $CONTAINER_NAME
 docker run --name=$CONTAINER_NAME -d \
 --restart unless-stopped \
 -v $WORK_DIR/results.txt:/results.txt \
--v $WORK_DIR/data:/data \
+-v $WORK_DIR/data:/app/data \
 --env SMTP_SERVER=172.17.0.1 \
 -p $HTTP_PORT:5000 \
 registry.simplifate.zlutazimnice.cz/$IMAGA_NAME:$IMAGE_TAG
