@@ -52,7 +52,7 @@ def wanna_play():
             'age'] + ", pohlavi: " + request.form['gender'] + "\n")
 
     # write informatin into database
-    prospect = Prospect(age=request.form['age'], email=request.form['email'], gender=request.form['gender'])
+    prospect = Prospect(age=request.form['age'], email=request.form['email'], gender=request.form['gender'], for_event=request.form['for_event'])
     db.session.add(prospect)
     db.session.commit()
 
