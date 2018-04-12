@@ -4,7 +4,7 @@
 #
 
 import os
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, json
 from flask_sqlalchemy import SQLAlchemy
 from time import gmtime, strftime
 from flask_mail import Mail, Message
@@ -16,10 +16,12 @@ app = Flask(__name__, static_folder="")
 app.debug = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data/database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['ADMIN_TOKEN']='yfyfyfyfyfyf'
 db = SQLAlchemy(app)
 
 # models need to be imported after db is initialized
 import models
+from models import Prospect
 
 ### config
 # email server
@@ -67,6 +69,13 @@ def wanna_play():
     # redirect to thank you page
     return redirect(request.url_root + '#thank-you', code=302)
 
+@app.route('/admin/show-prospects')
+def show_prospects():
+    prospects = Prospect.query.all()
+    prospects_out = [p.to_dict() for p in prospects]
+    response = app.response_class(json.dumps(prospects_out, indent=2), status=200,
+                                  content_type='application/json; charset=UTF-8')
+    return (response)
 
 @app.route('/<path:path>')
 def static_proxy(path):
