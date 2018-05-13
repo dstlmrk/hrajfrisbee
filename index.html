@@ -66,14 +66,15 @@
             </h3>
             <!-- <a class="btn btn-dark btn-xl js-scroll-trigger" href="#about">Chci se zúčastnit</a> -->
             <h3 class="mt-5 col-md-8 offset-md-2">
-              <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#event-registration" data-for-event="10.5.2018: Stromovka">
+                <!--
+                <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#event-registration" data-for-event="10.5.2018: Stromovka">
                 10.5.2018 Stromovka
-              </button>
+              </button>-->
               <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#event-registration" data-for-event="24.5.2018: Stromovka">
                 24.5.2018 Stromovka
               </button>
-              <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#event-registration" data-for-event="2.6.2018: Suchdol (hřiště ČZU)">
-                2.6.2018 Suchdol
+              <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#event-registration" data-for-event="3.6.2018: Suchdol (hřiště ČZU)">
+                3.6.2018 Suchdol
               </button>
               <br>
             </h3>
@@ -229,78 +230,112 @@
   </body>
 
   <!-- Modals -->
+
+  <div class="modal fade" id="thankYou" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+       aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Děkujeme za registraci</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  Děkujeme za vaší registraci na událost. <br>
+                  Sledujte nás na facebooku: <a href="https://www.facebook.com/hrajfrisbee.cz/">https://www.facebook.com/hrajfrisbee.cz/</a><br>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
   <div class="modal fade" id="event-registration" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
-      <form method="POST" action="/wanna-play">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Událost</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="container">
-                <div class="row">
-                <div class="col-lg-6">
-                    <span id="event_description"></span>
-                    <br>
-                    <hr>
-                    <span id="event_map"></span>
+        <form method="POST" action="/wanna-play">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Událost</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                      <label>Akce:</label>
-                      <select class="form-control" id="for_event" name="for_event">
-                        <option value="10.5.2018: Stromovka">10.5.2018: Stromovka</option>
-                        <option value="24.5.2018: Stromovka">24.5.2018: Stromovka</option>
-                        <option value="2.6.2018: Suchdol (hřiště ČZU)">2.6.2018: Suchdol (hřiště ČZU)</option>
-                      </select>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <span id="event_description"></span>
+                            </div>
+                            <div class="col-lg-6">
+                                <span id="event_map"></span>
+                            </div>
+                        </div>
+                        <div class="row"><br><br></div>
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-1">
+                                <h2>registrace na akci</h2>
+                                <hr>
+                                <div class="form-group">
+                                    <label>Akce:</label>
+                                    <select class="form-control" id="for_event" name="for_event">
+                                        <!--<option value="10.5.2018: Stromovka">10.5.2018: Stromovka</option>-->
+                                        <option value="24.5.2018: Stromovka">24.5.2018: Stromovka</option>
+                                        <option value="3.6.2018: Suchdol (hřiště ČZU)">3.6.2018: Suchdol (hřiště ČZU)
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Věk</label>
+                                    <input type="number" min="1" max="99" class="form-control" name="age">
+                                </div>
+                                <div class="form-group">
+                                    <label>Jsem</label>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="gender" id="girl" value="girl" checked="">
+                                            holka</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="gender" id="boy" value="boy"> kluk</label>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="event_date">
+                                <input type="hidden" name="event_time">
+                                <input type="hidden" name="event_location_details">
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="form-group">
-                      <label>Email</label>
-                      <input type="email" class="form-control" name="email">
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-dark">Přihlásit se</button>
                     </div>
-                    <div class="form-group">
-                      <label>Věk</label>
-                      <input type="number" min="1" max="99" class="form-control" name="age">
-                    </div>
-                    <div class="form-group">
-                      <label>Jsem</label>
-                      <div class="radio">
-                        <label>
-                          <input type="radio" name="gender" id="girl" value="girl" checked="">holka</label>
-                      </div>
-                      <div class="radio">
-                        <label>
-                        <input type="radio" name="gender" id="boy" value="boy">kluk</label>
-                      </div>
-                    </div>
-                  </div>
-              </div>
+                </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-dark">Přihlásit se</button>
-          </div>
-        </div>
-      </form>
+        </form>
     </div>
   </div>
+
 
   <script language="javascript">
     $( document ).ready(function() {
         events = {
-            '10.5.2018: Stromovka': {
-                'description': "Zveme vás na ukázkovou frisbee session #1 na psí louce.<br>Bude to krásné, příjemné a vůbec ......",
-                'map': '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2558.9693489572423!2d14.407030415718936!3d50.10558067942919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b9528311ed303%3A0xc17f42f067d6914b!2sPs%C3%AD+louka!5e0!3m2!1sen!2scz!4v1523565693851" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>'
-            },
             '24.5.2018: Stromovka': {
-                'description': "Zveme vás na ukázkovou frisbee session #2 na psí louce.<br>Bude to krásné, příjemné a vůbec ......",
+                'description': $('#description-24-5').html(),
+                'date': '24.5.2018',
+                'time': '17:00',
+                'location_details': 'na Psí louce ve stromovce',
                 'map': '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2558.9693489572423!2d14.407030415718936!3d50.10558067942919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b9528311ed303%3A0xc17f42f067d6914b!2sPs%C3%AD+louka!5e0!3m2!1sen!2scz!4v1523565693851" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>'
             },
-            '2.6.2018: Suchdol (hřiště ČZU)': {
-                'description': "Fajnová akce #3 na suchdole. Pořádné hřiště, ukázkové zápasy ......<br>Bude to krásné, příjemné a vůbec ......",
+            '3.6.2018: Suchdol (hřiště ČZU)': {
+                'description': $('#description-03-06').html(),
+                'date': '3.6.2018',
+                'time': '10:00',
+                'location_details': 'na fotbalovém hřišti ČZU na Suchdole',
                 'map': '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2557.674896001035!2d14.37487196587895!3d50.129805179432466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6d8487fc08bb6f0e!2sSuchdol+Sportcentrum+CZU!5e0!3m2!1sen!2scz!4v1523566219614" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>'
             },
         }
@@ -311,14 +346,48 @@
            // fill event_description and event_map components here
            $("#event_description").html(events[$(this).data('forEvent')]['description'])
            $("#event_map").html((events[$(this).data('forEvent')]['map']));
+           $('input[name=event_date]').val(events[$(this).data('forEvent')]['date'])
+           $('input[name=event_time]').val(events[$(this).data('forEvent')]['time'])
+           $('input[name=event_location_details]').val(events[$(this).data('forEvent')]['location_details'])
         });
+
 
         $("#for_event").bind("change", function(){
            $("#event_description").html(events[$(this).val()]['description'])
            $("#event_map").html((events[$(this).val()]['map']));
+           $('input[name=event_date]').val(events[$(this).data('forEvent')]['date'])
+           $('input[name=event_time]').val(events[$(this).data('forEvent')]['time'])
+           $('input[name=event_location_details]').val(events[$(this).data('forEvent')]['location_details'])
         });
 
+
+        // Show thank you page if it should be shown
+        if (window.location.href.includes("#thank-you")) {
+            $('#thankYou').modal('show')
+            //$('#event-registration').modal('show')
+        }
     });
   </script>
 
+<div id="description-24-5" class="hidden">
+    Už tě nebaví házet si “jen tak v parku s diskem” a chtěl/a bys něco víc? Nebo s házením teprve začínáš a chceš pse zlepšit?
+    <br><br>
+    Doraž 24.5. na Psí louku. Budeš mít možnost zahrát si kolektivní sport frisbee ultimate a naučit se různé způsoby házení s diskem.
+    <br><br>
+    Poznáš nás podle žlutých triček s nápisem <b>#hrajfrisbee</b>. S sebou potřebuješ jen sportovní oblečení a boty.
+    <br><br>
+    Akce je zdarma a je určena všem ve věku 14-30 let.  Dokonce máš šanci vyhrát originální frisbee disk. (slosování proběhne na závěrečné akci 3.6.)
+    <br><br>
+    Kdybys měl/a jakýkoliv dotaz, napiš nám zde na Facebooku nebo e-mail.
+</div>
+
+<div id="description-03-06" class="hidden">
+Nejsou termíny v týdnu pro tebe?
+<br><br>
+    3.6. v neděli přijď na <b>Suchdol na fotbalové hřiště ČZU</b>. Budeš mít možnost zahrát si kolektivní sport frisbee ultimate a naučit se i další způsoby házení s diskem.
+<br><br>
+    Poznáš nás podle žlutých triček s nápisem <b>#hrajfrisbee</b>. S sebou potřebuješ jen sportovní oblečení a boty.
+<br><br>
+Akce je zdarma a je určena všem ve věku 14-30 let.  Dokonce máš šanci vyhrát originální frisbee disk. (slosování proběhne na závěrečné akci 3.6.)
+</div>
 </html>

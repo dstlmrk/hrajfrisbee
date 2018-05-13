@@ -1,0 +1,82 @@
+<p>
+Už tě nebaví házet si “jen tak v parku s diskem” a chtěl/a bys něco víc? Nebo s házením teprve začínáš a chceš pse zlepšit?
+<br>
+Doraž 24.5. na Psí louku. Budeš mít možnost zahrát si kolektivní sport frisbee ultimate a naučit se různé způsoby házení s diskem.
+<br>
+Poznáš nás podle žlutých triček s nápisem #hrajfrisbee. S sebou potřebuješ jen sportovní oblečení a boty.
+<br>
+Akce je zdarma a je určena všem ve věku 14-30 let.  Dokonce máš šanci vyhrát originální frisbee disk. (slosování proběhne na závěrečné akci 3.6.)
+<br>
+Kdybys měl/a jakýkoliv dotaz, napiš nám zde na Facebooku nebo e-mail.
+</p>
+
+
+<div class="modal fade" id="event-registration" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <form method="POST" action="/wanna-play">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Událost</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <span id="event_description"></span>
+                            </div>
+                            <div class="col-lg-6">
+                                <span id="event_map"></span>
+                            </div>
+                        </div>
+                        <div class="row"><br><br></div>
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-1">
+                                <h2>registrace na akci</h2>
+                                <hr>
+                                <div class="form-group">
+                                    <label>Akce:</label>
+                                    <select class="form-control" id="for_event" name="for_event">
+                                        <!--<option value="10.5.2018: Stromovka">10.5.2018: Stromovka</option>-->
+                                        <option value="24.5.2018: Stromovka">24.5.2018: Stromovka</option>
+                                        <option value="3.6.2018: Suchdol (hřiště ČZU)">3.6.2018: Suchdol (hřiště ČZU)
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Věk</label>
+                                    <input type="number" min="1" max="99" class="form-control" name="age">
+                                </div>
+                                <div class="form-group">
+                                    <label>Jsem</label>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="gender" id="girl" value="girl" checked="">
+                                            holka</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="gender" id="boy" value="boy"> kluk</label>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="event_date">
+                                <input type="hidden" name="event_time">
+                                <input type="hidden" name="event_location_details">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-dark">Přihlásit se</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

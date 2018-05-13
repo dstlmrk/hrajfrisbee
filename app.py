@@ -8,6 +8,7 @@ from flask import Flask, request, redirect, json
 from flask_sqlalchemy import SQLAlchemy
 from time import gmtime, strftime
 from flask_mail import Mail, Message
+from flask import render_template
 
 
 
@@ -26,7 +27,7 @@ from models import Prospect
 ### config
 # email server
 app.config['MAIL_SERVER'] = os.getenv("SMTP_SERVER", "localhost")
-app.config['MAIL_PORT'] = 25
+app.config['MAIL_PORT'] = os.getenv("SMTP_PORT", 25)
 # MAIL_USERNAME = None
 # MAIL_PASSWORD = None
 
@@ -56,12 +57,19 @@ def wanna_play():
     db.session.add(prospect)
     db.session.commit()
 
-
-    # send an email with information to the user and to us
+    # send message to us
     try:
-        msg = Message('Nova registrace na hrajfrisbee.cz', sender='root@hrajfrisbee.cz', recipients=['kacerr.cz@gmail.com'])
+        msg = Message('Nova registrace na hrajfrisbee.cz', sender='root@hrajfrisbee.cz', recipients=['info@hrajfrisbee.cz'])
         msg.body = 'Uzivatel: ' + request.form['email'] + ', vek: ' + request.form['age'] + ", pohlavi: " + request.form[
             'gender'] + ' prave projevil zajem o frisbee.'
+        mail.send(msg)
+    except Exception as e:
+        print("Something went wrong. {}".format(e))
+
+    # send message to prospect
+    try:
+        msg = Message('Registrace na událost {}'.format(request.form['for_event']), sender='info@hrajfrisbee.cz', recipients=[request.form['email']])
+        msg.body = render_template('event-registration.html', event_title=request.form['for_event'], event_date=request.form['event_date'], event_location_details=request.form['event_location_details'])
         mail.send(msg)
     except Exception as e:
         print("Something went wrong. {}".format(e))
