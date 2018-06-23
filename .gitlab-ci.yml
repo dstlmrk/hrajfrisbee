@@ -1,0 +1,17 @@
+build_image:
+    stage: build
+    image: docker:1.13.1
+    services:
+        - docker:1.13.1-dind
+    script:
+        - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+        - docker build -t $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME -f .Dockerfile .
+        - docker push $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
+    # Urcime ze kterych vetvi / tagu se ma image buildovat
+    only:
+        - int
+        - master
+        - tags
+    # tag container nam rika ze bude image buildovat worker ktery umi zpracovavat kroky s tagem container
+    tags:
+        - container
