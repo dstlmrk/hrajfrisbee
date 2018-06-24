@@ -1,8 +1,7 @@
 build_image:
     stage: build
-    image: docker:1.13.1
     services:
-        - docker:1.13.1-dind
+        - docker:18.05.0-ce-dind
     script:
         - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
         - docker build -t $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME -f .Dockerfile .
