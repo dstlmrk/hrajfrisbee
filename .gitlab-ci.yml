@@ -6,10 +6,8 @@ build_image:
     services:
         - docker:18.05.0-ce-dind
     script:
-        - echo $PROJECT_BUILD_TOKEN
-        - echo docker login -u gitlab-ci-token -p $PROJECT_BUILD_TOKEN $CI_REGISTRY
-        - docker login -u gitlab-ci-token -p $PROJECT_BUILD_TOKEN $CI_REGISTRY
-        #- docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+        - echo docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+        - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
         - echo docker build -t $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME -f Dockerfile .
         - docker build -t $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME -f Dockerfile .
         - echo docker push $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
