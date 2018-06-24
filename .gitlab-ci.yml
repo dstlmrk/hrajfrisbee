@@ -1,6 +1,7 @@
 build_image:
     variables: 
-        CI_DEBUG_TRACE: true
+        CI_DEBUG_TRACE: "true"
+
     stage: build
     services:
         - docker:18.05.0-ce-dind
