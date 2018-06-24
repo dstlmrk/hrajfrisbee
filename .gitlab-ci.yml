@@ -6,12 +6,9 @@ build_image:
     services:
         - docker:18.05.0-ce-dind
     script:
-        - echo docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
         - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-        - echo docker build -t $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME -f Dockerfile .
-        - docker build -t $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME -f Dockerfile .
-        - echo docker push $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
-        - docker push $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
+        - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --build-arg GIT_COMMIT_HASH="$CI_COMMIT_SHA" -f Dockerfile .
+        - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     # Urcime ze kterych vetvi / tagu se ma image buildovat
     only:
         - int
